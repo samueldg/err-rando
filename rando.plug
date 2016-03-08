@@ -1,0 +1,9 @@
+[Core]
+Name = Rando
+Module = rando
+
+[Documentation]
+Description = Bot with useful random functionalities.
+
+[Python]
+Version=2+

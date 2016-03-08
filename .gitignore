@@ -1,0 +1,15 @@
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.venv
+
+### Sublime Text ###
+*.sublime-project
+*.sublime-workspace
+
+### JetBrains ###
+.idea
+
+### Mac ###
+*.DS_Store
