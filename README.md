@@ -21,7 +21,7 @@
 `!pick`:
 
 > Hungry Guy: Where do we go for lunch today?  
-> Hungry Coworker: !pick pizza thai burger sushi
+> Hungry Coworker: !pick pizza thai burger sushi  
 > Rando: thai  
 > Hungry Guy: All right, let's do this!  
 
