@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import random
 
 from errbot import botcmd
@@ -41,10 +42,10 @@ CARD_SUITS = [
   'spades',
 ]
 CARD_SUITS_SYMBOLS = [
-    u'\u2665',  #heart
-    u'\u2666',  #diamonds
-    u'\u2663',  #clubs
-    u'\u2660',  #spades
+    '\u2665',  #heart
+    '\u2666',  #diamonds
+    '\u2663',  #clubs
+    '\u2660',  #spades
 ]
 
 
@@ -65,7 +66,7 @@ class Rando(BotPlugin):
         """Returns a card: [ace..king] of [hearts|diamonds|clubs|spades]"""
         value = random.choice(list(zip(CARD_VALUES, CARD_VALUES_NUM)))
         suit = random.choice(list(zip(CARD_SUITS, CARD_SUITS_SYMBOLS)))
-        return u"{0} of {1} [{2}{3}]".format(value[0], suit[0], suit[1], value[1])
+        return "{0} of {1} [{2}{3}]".format(value[0], suit[0], suit[1], value[1])
 
     @botcmd(split_args_with=' ', admin_only=False)
     def pick(self, mess, args):
