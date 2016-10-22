@@ -63,8 +63,8 @@ class Rando(BotPlugin):
     @botcmd(admin_only=False)
     def dealcard(self, mess, args):
         """Returns a card: [ace..king] of [hearts|diamonds|clubs|spades]"""
-        value = random.choice(zip(CARD_VALUES, CARD_VALUES_NUM))
-        suit = random.choice(zip(CARD_SUITS, CARD_SUITS_SYMBOLS))
+        value = random.choice(list(zip(CARD_VALUES, CARD_VALUES_NUM)))
+        suit = random.choice(list(zip(CARD_SUITS, CARD_SUITS_SYMBOLS)))
         return u"{0} of {1} [{2}{3}]".format(value[0], suit[0], suit[1], value[1])
 
     @botcmd(split_args_with=' ', admin_only=False)
