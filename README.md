@@ -1,5 +1,7 @@
 # Rando
 
+[![Build Status](https://travis-ci.org/samueldg/err-rando.svg?branch=master)](https://travis-ci.org/samueldg/err-rando)
+
 **Rando** is a bot with useful random functionalities, for when taking decisions is hard or inconvenient.
 
 ## Commands
