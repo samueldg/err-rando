@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 import random
 
 from errbot import botcmd
@@ -20,6 +19,7 @@ CARD_VALUES = [
     'queen',
     'king',
 ]
+
 CARD_VALUES_NUM = [
     'A',
     '2',
@@ -35,17 +35,19 @@ CARD_VALUES_NUM = [
     'Q',
     'K',
 ]
+
 CARD_SUITS = [
   'hearts',
   'diamonds',
   'clubs',
   'spades',
 ]
+
 CARD_SUITS_SYMBOLS = [
-    '\u2665',  #heart
-    '\u2666',  #diamonds
-    '\u2663',  #clubs
-    '\u2660',  #spades
+    '\u2665',  # hearts
+    '\u2666',  # diamonds
+    '\u2663',  # clubs
+    '\u2660',  # spades
 ]
 
 

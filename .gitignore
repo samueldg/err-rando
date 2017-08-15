@@ -8,13 +8,3 @@ __pycache__/
 .venv/
 .tox/
 .cache/
-
-### Sublime Text ###
-*.sublime-project
-*.sublime-workspace
-
-### JetBrains ###
-.idea
-
-### Mac ###
-*.DS_Store
