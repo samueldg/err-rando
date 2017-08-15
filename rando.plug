@@ -6,4 +6,4 @@ Module = rando
 Description = Bot with useful random functionalities.
 
 [Python]
-Version=2+
+Version = 3

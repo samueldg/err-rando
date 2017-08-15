@@ -1,15 +1,19 @@
 """Basic output validation tests"""
-from __future__ import unicode_literals
-
 import re
 import sys
 import unittest
+
+import rando
 
 from rando import CARD_SUITS
 from rando import CARD_SUITS_SYMBOLS
 from rando import CARD_VALUES
 from rando import CARD_VALUES_NUM
-from rando import Rando
+
+
+# pytest
+extra_plugin_dir = '.'
+pytest_plugins = ['errbot.backends.test']
 
 
 def choice_pattern(choices):
@@ -21,37 +25,41 @@ def choice_pattern(choices):
     """
     return r'({0})'.format('|'.join(choices))
 
-class RandoBotTest(unittest.TestCase):
 
-    def setUp(self):
-        self.bot = Rando(bot=None)
+def test_cointoss(testbot):
+    expected_results = ['heads', 'tails']
+    testbot.push_message('!cointoss')
+    result = testbot.pop_message()
+    assert result in expected_results
 
-    def test_cointoss(self):
-        expected_results = ['heads', 'tails']
-        result = self.bot.cointoss(None, None)
-        self.assertIn(result, expected_results)
 
-    def test_diceroll(self):
-        expected_results = [1, 2, 3, 4, 5, 6]
-        result = self.bot.diceroll(None, None)
-        self.assertIn(result, expected_results)
+def test_diceroll(testbot):
+    expected_results = [str(num) for num in range(1, 7)]
+    testbot.push_message('!diceroll')
+    result = testbot.pop_message()
+    assert result in expected_results
 
-    def test_dealcard(self):
-        suits_pattern = choice_pattern(CARD_SUITS)
-        values_pattern = choice_pattern(CARD_VALUES)
-        suit_symbols_pattern = choice_pattern(CARD_SUITS_SYMBOLS)
-        values_num_pattern = choice_pattern(CARD_VALUES_NUM)
 
-        card_pattern = r'{0} of {1} \[{2}{3}\]'.format(values_pattern,
-                                                    suits_pattern,
-                                                    suit_symbols_pattern,
-                                                    values_num_pattern)
-        card_pattern = re.compile(card_pattern, re.UNICODE)
+def test_dealcard(testbot):
+    suits_pattern = choice_pattern(CARD_SUITS)
+    values_pattern = choice_pattern(CARD_VALUES)
+    suit_symbols_pattern = choice_pattern(CARD_SUITS_SYMBOLS)
+    values_num_pattern = choice_pattern(CARD_VALUES_NUM)
 
-        result = self.bot.dealcard(None, None)
-        self.assertTrue(re.match(card_pattern, result))
+    card_pattern = r'{0} of {1} \[{2}{3}\]'.format(values_pattern,
+                                                suits_pattern,
+                                                suit_symbols_pattern,
+                                                values_num_pattern)
+    card_pattern = re.compile(card_pattern, re.UNICODE)
 
-    def test_pick(self):
-        choices = ['Athos', 'Aramis', 'Porthos', 'D\'Artagnan']
-        result = self.bot.pick(None, args=choices)
-        self.assertIn(result, choices)
+    testbot.push_message('!dealcard')
+    result = testbot.pop_message()
+    assert re.match(card_pattern, result)
+
+
+def test_pick(testbot):
+    choices = ['Athos', 'Aramis', 'Porthos', 'D\'Artagnan']
+    choices_string = ' '.join(choices)
+    testbot.push_message('!pick ' + choices_string)
+    result = testbot.pop_message()
+    assert result in choices
