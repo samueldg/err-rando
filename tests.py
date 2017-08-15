@@ -1,7 +1,5 @@
 """Basic output validation tests"""
 import re
-import sys
-import unittest
 
 import rando
 
