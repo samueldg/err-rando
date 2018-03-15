@@ -101,7 +101,7 @@ class Rando(BotPlugin):
 
     @botcmd(split_args_with=' ', admin_only=False)
     def pick(self, mess, args):
-        """ Returns one of the user-provided choices"""
+        """Returns one of the user-provided choices"""
         return random.choice(args)
 
     @botcmd(name='8ball')
