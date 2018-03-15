@@ -37,10 +37,10 @@ CARD_VALUES_NUM = [
 ]
 
 CARD_SUITS = [
-  'hearts',
-  'diamonds',
-  'clubs',
-  'spades',
+    'hearts',
+    'diamonds',
+    'clubs',
+    'spades',
 ]
 
 CARD_SUITS_SYMBOLS = [
@@ -48,6 +48,35 @@ CARD_SUITS_SYMBOLS = [
     '\u2666',  # diamonds
     '\u2663',  # clubs
     '\u2660',  # spades
+]
+
+# See https://en.wikipedia.org/wiki/Magic_8-Ball#Possible_answers
+EIGHTBALL_ANSWERS = [
+    # Affirmative
+    "It is certain",
+    "It is decidedly so",
+    "Without a doubt",
+    "Yes definitely",
+    "You may rely on it",
+    "As I see it, yes",
+    "Most likely",
+    "Outlook good",
+    "Yes",
+    "Signs point to yes",
+
+    # Non-committal
+    "Reply hazy try again",
+    "Ask again later",
+    "Better not tell you now",
+    "Cannot predict now",
+    "Concentrate and ask again",
+
+    # Negative
+    "Don't count on it",
+    "My reply is no",
+    "My sources say no",
+    "Outlook not so good",
+    "Very doubtful",
 ]
 
 
@@ -74,3 +103,8 @@ class Rando(BotPlugin):
     def pick(self, mess, args):
         """ Returns one of the user-provided choices"""
         return random.choice(args)
+
+    @botcmd(name='8ball')
+    def eightball(self, mess, args):
+        """Returns a Magic 8-Ball reply"""
+        return random.choice(EIGHTBALL_ANSWERS)

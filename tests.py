@@ -7,6 +7,7 @@ from rando import CARD_SUITS
 from rando import CARD_SUITS_SYMBOLS
 from rando import CARD_VALUES
 from rando import CARD_VALUES_NUM
+from rando import EIGHTBALL_ANSWERS
 
 
 # pytest
@@ -61,3 +62,8 @@ def test_pick(testbot):
     testbot.push_message('!pick ' + choices_string)
     result = testbot.pop_message()
     assert result in choices
+
+
+def test_eightball(testbot):
+    testbot.push_message('!8ball')
+    assert testbot.pop_message() in EIGHTBALL_ANSWERS
