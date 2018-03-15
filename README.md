@@ -10,6 +10,7 @@
 - `!diceroll` — Returns an integer from 1 to 6.
 - `!dealcard` — Returns a random card value and suit.
 - `!pick` — Picks from a user-defined list of space-sparated items.
+- `!8ball` — Returns a [Magic 8-Ball](https://en.wikipedia.org/wiki/Magic_8-Ball) reply.
 
 ## Example usage
 
@@ -26,6 +27,11 @@
 > Hungry Coworker: !pick pizza thai burger sushi  
 > Rando: thai  
 > Hungry Guy: All right, let's do this!  
+
+`!8ball`:
+
+> Insecure Dev: !8ball Should I deploy to prod this Friday?  
+> Rando: My sources say no  
 
 ## Installation
 
