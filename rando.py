@@ -37,10 +37,10 @@ CARD_VALUES_NUM = [
 ]
 
 CARD_SUITS = [
-  'hearts',
-  'diamonds',
-  'clubs',
-  'spades',
+    'hearts',
+    'diamonds',
+    'clubs',
+    'spades',
 ]
 
 CARD_SUITS_SYMBOLS = [
