@@ -136,3 +136,9 @@ class Rando(BotPlugin):
     def eightball(self, mess, args):
         """Returns a Magic 8-Ball reply"""
         return random.choice(EIGHTBALL_ANSWERS)
+
+    @botcmd(split_args_with=' ', admin_only=False)
+    def shuffle(self, mess, args):
+        """Returns arguments in random order"""
+        random.shuffle(args)
+        return ' '.join(args)
