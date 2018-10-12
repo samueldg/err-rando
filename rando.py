@@ -1,4 +1,5 @@
 import random
+import re
 
 from errbot import botcmd
 from errbot import BotPlugin
@@ -79,6 +80,7 @@ EIGHTBALL_ANSWERS = [
     "Very doubtful",
 ]
 
+_DICEROLLS = re.compile("(\d*)[wW](\d+)")
 
 class Rando(BotPlugin):
 
@@ -89,8 +91,34 @@ class Rando(BotPlugin):
 
     @botcmd(admin_only=False)
     def diceroll(self, mess, args):
-        """Returns a dice number (1 through 6)"""
-        return random.randint(1, 6)
+        """Returns a 6-sided dice roll. Optional argument like '3w6 1w12'."""
+        if not args:
+            return random.randint(1, 6)
+        total = 0
+        rolls = list()
+        for d in re.finditer(_DICEROLLS, args):
+            if not d.group(1):
+                count = 1
+            else:
+                count = int(d.group(1))
+            sides = int(d.group(2))
+            if count > 100:
+                return "Sry, I don't have that many w%d in my bag" % sides
+            if sides > 100:
+                return "Sry, I have no w%d in my bag" % sides
+            if sides == 0:
+                continue
+            for i in range(count):
+                roll = random.randint(1, sides)
+                total += roll
+                rolls.append(roll)
+        if not rolls:
+            return
+        elif len(rolls) == 1:
+            return '%d' % total
+        else:
+            srolls = ', '.join(map(str, rolls))
+            return '%d  (%s)' % (total, srolls)
 
     @botcmd(admin_only=False)
     def dealcard(self, mess, args):
